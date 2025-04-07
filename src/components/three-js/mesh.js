@@ -1,22 +1,32 @@
 import * as THREE from 'three'
 
 function createMesh(geometry) {
-    const material = new THREE.MeshPhongMaterial( { color: 0xd5d5d5, specular: 0x494949, shininess: 200 } )
-    let meshMaterial = material;
+  const material = new THREE.MeshPhongMaterial({
+    color: 0xd5d5d5,
+    specular: 0x494949,
+    shininess: 200
+  })
 
-    if (geometry.hasColors) {
-      meshMaterial = new THREE.MeshPhongMaterial({ opacity: geometry.alpha, vertexColors: true });
-    }
+  let meshMaterial = material
 
-    const mesh = new THREE.Mesh(geometry, meshMaterial);
-    mesh.position.set(0, -0.37, -0.6);
-    mesh.rotation.set(-Math.PI / 2, 0, 0);
-    mesh.scale.set(2, 2, 2);
+  if (geometry.hasColors) {
+    meshMaterial = new THREE.MeshPhongMaterial({
+      opacity: geometry.alpha,
+      vertexColors: true
+    })
+  }
 
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
+  const mesh = new THREE.Mesh(geometry, meshMaterial)
 
-    return mesh;
+  // Você pode manter esse posicionamento e rotação
+  mesh.position.set(0, -0.37, -0.6)
+  mesh.rotation.set(-Math.PI / 2, 0, 0)
+  mesh.scale.set(1, 1, 1)
+
+  mesh.castShadow = true
+  mesh.receiveShadow = true
+
+  return mesh
 }
 
 export { createMesh }

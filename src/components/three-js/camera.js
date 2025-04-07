@@ -6,9 +6,9 @@ function createCamera(renderer, scene, canvas) {
     75,
     window.innerWidth / window.innerHeight,
     0.1,
-    1000
+    2000
   )
-  camera.position.z = 3
+  camera.position.z = 10
   onWindowResize(camera, renderer, scene, canvas);
   window.addEventListener('resize', onWindowResize, false)
   return camera;

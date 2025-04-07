@@ -12,7 +12,7 @@ export default {
   name: 'ThreeDView',
   mounted() {
     this.threeScene = new ThreeScene(this.$refs.canvas);
-    this.threeScene.init('models/skull.stl');
+    this.threeScene.init('models/mug.stl');
   }
 };
 
@@ -21,7 +21,7 @@ export default {
 <style scoped>
   canvas {
     width: 50vw;
-    height: 75vh;
+    height: 50vh;
     margin: 0;
     padding: 0;
     overflow: hidden;
