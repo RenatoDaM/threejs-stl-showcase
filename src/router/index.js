@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import ThreeDView from '../views/ThreeDView.vue';
+import MainModelView from '../views/MainModelView.vue';
 
 const routes = [
   { path: '/', component: HomeView },
-  { path: '/3d', component: ThreeDView }
+  { path: '/3d/:id', component: MainModelView, props: true }
 ];
 
 const router = createRouter({

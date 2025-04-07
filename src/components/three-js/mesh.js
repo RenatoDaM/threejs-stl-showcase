@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 function createMesh(geometry) {
   const material = new THREE.MeshPhongMaterial({
-    color: 0xd5d5d5,
+    color: 0xccdffc,
     specular: 0x494949,
     shininess: 200
   })

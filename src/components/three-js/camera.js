@@ -1,4 +1,3 @@
-import { PerspectiveCamera } from 'three';
 import * as THREE from 'three'
 
 function createCamera(renderer, scene, canvas) {

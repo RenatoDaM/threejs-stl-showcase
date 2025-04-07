@@ -22,7 +22,7 @@ export default class ThreeScene {
     this.camera = createCamera(this.renderer, this.scene, this.canvas)
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
     this.controls.enableDamping = true
-
+    
     loadModel(modelPath, this.scene, (mesh) => {
       fitCameraToObject(this.camera, mesh, this.controls)
     })

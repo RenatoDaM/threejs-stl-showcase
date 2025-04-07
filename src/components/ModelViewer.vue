@@ -1,21 +1,23 @@
 <template>
-  <div id="three-container">
+  <div class="model-viewer">
     <canvas id="canvas-item" ref="canvas"></canvas>
   </div>
 </template>
-  
-<script>
 
+<script>
 import ThreeScene from '../components/three-js/threeScene';
-  
+
 export default {
-  name: 'ThreeDView',
+  name: 'ModelViewer',
+  props: {
+    modelPath: { type: String, required: true }
+  },
   mounted() {
     this.threeScene = new ThreeScene(this.$refs.canvas);
-    this.threeScene.init('models/hamster.stl');
+    console.log(this.modelPath);
+    this.threeScene.init(this.modelPath);
   }
 };
-
 </script>
 
 <style scoped>

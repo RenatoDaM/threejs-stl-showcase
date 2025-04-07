@@ -3,6 +3,7 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 
 function loadModel(filePath, scene, onLoad) {
   const loader = new STLLoader()
+  console.log(filePath)
 
   loader.load(
     filePath,
