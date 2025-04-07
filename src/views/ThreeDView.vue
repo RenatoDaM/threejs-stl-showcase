@@ -12,7 +12,7 @@ export default {
   name: 'ThreeDView',
   mounted() {
     this.threeScene = new ThreeScene(this.$refs.canvas);
-    this.threeScene.init('models/mug.stl');
+    this.threeScene.init('models/hamster.stl');
   }
 };
 
