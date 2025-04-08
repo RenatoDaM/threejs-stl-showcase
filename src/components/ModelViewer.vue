@@ -1,31 +1,81 @@
 <template>
   <div class="model-viewer">
-    <canvas id="canvas-item" ref="canvas"></canvas>
+    <div class="canvas-container" :class="{ loading: isLoading }">
+      <canvas id="canvas-item" ref="canvas"></canvas>
+      <div v-if="isLoading" class="loading-overlay">
+        <div class="spinner"></div>
+      </div>
+    </div>
   </div>
 </template>
 
+
 <script>
-import ThreeScene from '../components/three-js/threeScene';
+import ThreeScene from '../components/three-js/threeScene'
 
 export default {
   name: 'ModelViewer',
   props: {
     modelPath: { type: String, required: true }
   },
+  data() {
+    return {
+      isLoading: true
+    }
+  },
   mounted() {
-    this.threeScene = new ThreeScene(this.$refs.canvas);
-    console.log(this.modelPath);
-    this.threeScene.init(this.modelPath);
+    this.threeScene = new ThreeScene(this.$refs.canvas)
+    this.threeScene.init(this.modelPath, () => {
+      this.isLoading = false
+    })
   }
-};
+}
 </script>
 
+
 <style scoped>
-  canvas {
-    width: 50vw;
-    height: 50vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+.canvas-container {
+  position: relative;
+  width: 35vw;
+  height: 35vh;
+  overflow: hidden;
+}
+
+.canvas-container.loading canvas {
+  filter: blur(4px) brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #1e90ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
+}
 </style>

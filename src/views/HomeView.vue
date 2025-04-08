@@ -1,7 +1,7 @@
 <template>
     <div>
-      <h1>Bem-vindo</h1>
-      <router-link to="/3d">Ir para 3D</router-link>
+      <h1>Model Showcase</h1>
+      <router-link to="/3d/001">Hamster</router-link>
     </div>
   </template>
   

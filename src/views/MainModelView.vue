@@ -13,6 +13,7 @@
     <div v-else class="product-not-found">
       <h2>Produto não encontrado</h2>
     </div>
+    <button class="nav-button" @click="handleNext">Next</button>
   </template>
   
   <script>
@@ -37,6 +38,14 @@
     methods: {
       handleOrder() {
         alert(`Pedido realizado para: ${this.product.title}`);
+      },
+      handleNext() {
+        let nextId;
+        do {
+          const random = Math.floor(Math.random() * 3) + 1;
+          nextId = `00${random}`;
+        } while (nextId === this.id);
+        this.$router.push(`/3d/${nextId}`);
       }
     }
   };
@@ -46,7 +55,7 @@
   .product-page {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     gap: 2rem;
     padding: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,5 +64,33 @@
     padding: 2rem;
     text-align: center;
   }
+  .navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.nav-button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:hover {
+  background-color: #1c86ee;
+  transform: translateY(-2px);
+}
+
+.nav-button:active {
+  transform: translateY(0);
+  background-color: #1874cd;
+}
   </style>
   
