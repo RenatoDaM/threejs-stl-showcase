@@ -28,7 +28,7 @@ export default {
     this.threeScene.init(this.modelPath, () => {
       this.isLoading = false
     })
-  }
+  },
 }
 </script>
 

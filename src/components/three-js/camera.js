@@ -1,24 +1,14 @@
 import * as THREE from 'three'
 
-function createCamera(renderer, scene, canvas) {
+function createCamera(canvas) {
   const camera = new THREE.PerspectiveCamera(
     75,
-    window.innerWidth / window.innerHeight,
+    canvas.clientWidth / canvas.clientHeight,
     0.1,
     2000
-  )
-  camera.position.z = 10
-  onWindowResize(camera, renderer, scene, canvas);
-  window.addEventListener('resize', onWindowResize, false)
+  );
+  camera.position.z = 10;
   return camera;
 }
 
-function onWindowResize(camera, renderer, scene, canvas) {
-  console.log(canvas.clientWidth);
-  camera.aspect = canvas.clientWidth / canvas.clientHeight
-  camera.updateProjectionMatrix()
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight)
-  renderer.render(scene, camera)
-}
- 
 export { createCamera };

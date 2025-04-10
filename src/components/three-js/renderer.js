@@ -1,4 +1,3 @@
-import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 import * as THREE from 'three'
 
 function createRenderer(canvas) {

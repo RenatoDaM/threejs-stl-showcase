@@ -3,7 +3,6 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 
 function loadModel(filePath, scene, onLoad) {
   const loader = new STLLoader()
-  console.log(filePath)
 
   loader.load(
     filePath,
@@ -14,7 +13,6 @@ function loadModel(filePath, scene, onLoad) {
       if (onLoad) onLoad(mesh)
     },
     (xhr) => {
-      console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
     },
     (error) => {
       console.error(error)

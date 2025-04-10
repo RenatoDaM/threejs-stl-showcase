@@ -18,7 +18,6 @@ function createMesh(geometry) {
 
   const mesh = new THREE.Mesh(geometry, meshMaterial)
 
-  // Você pode manter esse posicionamento e rotação
   mesh.position.set(0, -0.37, -0.6)
   mesh.rotation.set(-Math.PI / 2, 0, 0)
   mesh.scale.set(1, 1, 1)
