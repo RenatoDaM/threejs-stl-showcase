@@ -1,10 +1,13 @@
-import { type ColorRepresentation } from "three";
 import * as THREE from 'three'
 
-function createLights(x: number, y: number, z: number, color: ColorRepresentation, intensity: number) {
-  const directionalLight = new THREE.DirectionalLight(color, intensity);
-  directionalLight.position.set(x, y, z);
+export function createDefaultLights(): THREE.Object3D {
+  const group = new THREE.Group();
 
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  group.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 3.5);
+  directionalLight.position.set(1, 1, 1);
   directionalLight.castShadow = true;
 
   const d = 1;
@@ -15,9 +18,9 @@ function createLights(x: number, y: number, z: number, color: ColorRepresentatio
 
   directionalLight.shadow.camera.near = 1;
   directionalLight.shadow.camera.far = 4;
-
   directionalLight.shadow.bias = -0.002;
-  return directionalLight;
-}
 
-export { createLights };
+  group.add(directionalLight);
+
+  return group;
+}

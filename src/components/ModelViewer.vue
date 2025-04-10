@@ -1,7 +1,8 @@
+<!-- ModelViewer.vue -->
 <template>
   <div class="model-viewer">
     <div class="canvas-container" :class="{ loading: isLoading }">
-      <canvas id="canvas-item" ref="canvas"></canvas>
+      <canvas ref="canvas"></canvas>
       <div v-if="isLoading" class="loading-overlay">
         <div class="spinner"></div>
       </div>
@@ -9,9 +10,8 @@
   </div>
 </template>
 
-
 <script>
-import ThreeScene from '../components/three-js/threeScene'
+import ModelSceneController from './three-js/modelSceneController'
 
 export default {
   name: 'ModelViewer',
@@ -24,7 +24,7 @@ export default {
     }
   },
   mounted() {
-    this.threeScene = new ThreeScene(this.$refs.canvas)
+    this.threeScene = new ModelSceneController(this.$refs.canvas)
     this.threeScene.init(this.modelPath, () => {
       this.isLoading = false
     })
@@ -32,12 +32,11 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .canvas-container {
   position: relative;
-  width: 35vw;
-  height: 35vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 

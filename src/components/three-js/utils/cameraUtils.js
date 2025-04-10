@@ -12,10 +12,7 @@ function fitCameraToObject(camera, object, controls, offset = 1.5) {
   camera.position.set(center.x, center.y + cameraZ * 0.2, center.z + cameraZ * offset)
   camera.lookAt(center)
 
-  if (controls) {
-    controls.target.copy(center)
-    controls.update()
-  }
+  controls.target.copy(center)
 }
 
 export { fitCameraToObject }

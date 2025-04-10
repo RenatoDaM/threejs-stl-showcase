@@ -1,46 +1,39 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { createLights } from './lights'
+import { createDefaultLights } from './lights'
 import { createCamera } from './camera'
 import { createRenderer } from './renderer'
 import { loadModel } from './loader'
 import { fitCameraToObject } from './utils/cameraUtils'
 import Stats from 'three/examples/jsm/libs/stats.module'
+import { createControls } from './control'
 
-export default class ThreeScene {
+export default class ModelSceneController {
   constructor(canvas) {
     this.canvas = canvas
   }
 
-  init(modelPath, onLoadedCallback) {
+  init(modelUrl, onLoadedCallback) {
     this.scene = new THREE.Scene()
-    this.scene.add(new THREE.AmbientLight(0xffffff, 0.5))
-    this.scene.add(createLights(1, 1, 1, 0xffffff, 3.5, this.scene))
-  
+    this.scene.add(createDefaultLights());
     this.renderer = createRenderer(this.canvas)
     this.camera = createCamera(this.renderer, this.scene, this.canvas)
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-    this.controls.enableDamping = true
+    this.controls = createControls(this.camera, this.renderer.domElement)
   
-    loadModel(modelPath, this.scene, (mesh) => {
+    loadModel(modelUrl, this.scene, (mesh) => {
       fitCameraToObject(this.camera, mesh, this.controls)
       if (onLoadedCallback) onLoadedCallback()
     })
   
     this.stats = new Stats()
     document.body.appendChild(this.stats.dom)
-    this.animate()
+    this.animateScene()
   }
   
 
-  animate() {
-    requestAnimationFrame(() => this.animate())
+  animateScene() {
+    requestAnimationFrame(() => this.animateScene())
     this.controls.update()
-    this.render()
-    this.stats.update()
-  }
-
-  render() {
     this.renderer.render(this.scene, this.camera)
+    this.stats.update()
   }
 }

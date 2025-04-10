@@ -7,7 +7,7 @@ export const PRODUCT_MAP = {
       size: '~5cm',
       material: 'PLA (biodegradável)',
       color: 'Personalizável',
-      modelPath: 'https://tg-3d-model.s3.us-east-2.amazonaws.com/hamster.stl'
+      modelPath: '/models/hamster.stl'
     },
     '002': {
       id: '002',
@@ -16,7 +16,7 @@ export const PRODUCT_MAP = {
       size: '~6cm',
       material: 'PLA',
       color: 'Branco, Preto ou Colorido',
-      modelPath: 'https://tg-3d-model.s3.us-east-2.amazonaws.com/skull_simplified.stl'
+      modelPath: '/models/skull_simplified.stl'
     },
     '003': {
       id: '003',
@@ -25,7 +25,7 @@ export const PRODUCT_MAP = {
       size: '~6cm',
       material: 'PLA',
       color: 'Branco, Preto ou Colorido',
-      modelPath: 'https://tg-3d-model.s3.us-east-2.amazonaws.com/axolot.stl'
+      modelPath: '/models/axolot.stl'
     }
   };
   
