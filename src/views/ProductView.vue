@@ -57,7 +57,7 @@ export default {
     handleNext() {
       let nextId;
       do {
-        const random = Math.floor(Math.random() * 3) + 1;
+        const random = Math.floor(Math.random() * 4) + 1;
         nextId = `00${random}`;
       } while (nextId === this.id);
       this.$router.push(`/3d/${nextId}`);

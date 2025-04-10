@@ -26,6 +26,15 @@ export const PRODUCT_MAP = {
       material: 'PLA',
       color: 'Branco, Preto ou Colorido',
       modelPath: 'https://tg-3d-model.s3.us-east-2.amazonaws.com/axolot.stl'
+    },
+    '004': {
+      id: '004',
+      title: 'Axolot simplified 5,7MB',
+      description: 'Axolot 3D, perfeita para decorar seu espaço ou presentear alguém especial.',
+      size: '~6cm',
+      material: 'PLA',
+      color: 'Branco, Preto ou Colorido',
+      modelPath: 'https://tg-3d-model.s3.us-east-2.amazonaws.com/simplify_axolot.stl'
     }
   };
   
